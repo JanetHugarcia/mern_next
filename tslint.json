@@ -69,9 +69,9 @@
         true,
         "ignore-for-loop"
       ],
-      "curly": true,
+      "curly": false,
       "no-empty": true,
-      "no-unused-expression": true,
+      "no-unused-expression": false,
       "eofline": false,
       "trailing-comma": [
         true,

@@ -3,15 +3,12 @@ import next from 'next';
 import morgan from 'morgan';
 
 import graphqlHTTP from 'express-graphql';
-import schema from './schema';
-import resolvers from './resolvers';
+import { schema } from './data/schema';
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-
-const root = resolvers;
 
 app.prepare().then(() => {
     const server = express();
@@ -23,7 +20,6 @@ app.prepare().then(() => {
     server.use(morgan('dev'));
     server.use('/graphql', graphqlHTTP({
         schema,
-        rootValue: root,
         graphiql: true
     }))
 
