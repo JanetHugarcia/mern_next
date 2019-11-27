@@ -1,8 +1,9 @@
  
-import React from 'react'
-import Link from 'next/link'
+import React from 'react';
+import Link from 'next/link';
+import { withApollo } from '../frontend/apollo';
 
-export default () => (
+const IndexPage = () => (
   <ul>
     <li>
       <Link href="/a" as="/a">
@@ -16,3 +17,5 @@ export default () => (
     </li>
   </ul>
 )
+
+export default withApollo(IndexPage);
