@@ -9,7 +9,7 @@
     ],
     "baseUrl": ".",
     "moduleResolution": "node",
-    "strict": true,
+    // "strict": true,
     "allowJs": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
@@ -21,7 +21,8 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
   "exclude": [
     "dist",
@@ -40,6 +41,7 @@
     "**/*.tsx"
   ],
   "files": [
-    "./node_modules/@types/express/index.d.ts"
+    "./node_modules/@types/express/index.d.ts",
+    "./node_modules/@types/morgan/index.d.ts"
   ]
 }
