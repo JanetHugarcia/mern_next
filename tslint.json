@@ -5,14 +5,14 @@
         true,
         "check-space"
       ],
-      "indent": [
-        true,
-        "tabs"
-      ],
+      // "indent": [
+      //   true,
+      //   "tabs"
+      // ],
       "no-duplicate-variable": true,
       "no-eval": true,
       "no-internal-module": true,
-      "no-trailing-whitespace": true,
+      "no-trailing-whitespace": false,
       "no-var-keyword": true,
       "one-line": [
         true,
@@ -26,10 +26,10 @@
         true,
         "single"
       ],
-      "semicolon": [
-        true,
-        "always"
-      ],
+      // "semicolon": [
+      //   true,
+      //   "always"
+      // ],
       "triple-equals": [
         true,
         "allow-null-check"
@@ -72,7 +72,7 @@
       "curly": true,
       "no-empty": true,
       "no-unused-expression": true,
-      "eofline": true,
+      "eofline": false,
       "trailing-comma": [
         true,
         {

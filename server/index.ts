@@ -4,42 +4,22 @@ import morgan from 'morgan';
 
 import graphqlHTTP from 'express-graphql';
 import schema from './schema';
-
+import resolvers from './resolvers';
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+const root = resolvers;
+
 app.prepare().then(() => {
     const server = express();
 
-    //settings
+    // settings
     server.set('port', PORT);
 
-    //resolvers graphql
-    const createCliente = (id, {nombre}) => {
-        return {
-            id,
-            nombre
-        }
-    }
-    const clientesDB = {};
-    const root = {
-        cliente: () => {
-            return {
-                nombre: 'Diego'
-            }        
-        },
-        crearCliente: ({input}) => {
-            const id = require('crypto').randomBytes(10).toString('hex');
-            clientesDB[id] = input;
-            const client = createCliente(id, input);
-            return client;
-        }
-    }
-
-    //middlewares
+    // middlewares
     server.use(morgan('dev'));
     server.use('/graphql', graphqlHTTP({
         schema,
@@ -47,8 +27,7 @@ app.prepare().then(() => {
         graphiql: true
     }))
 
-
-    //routes
+    // routes
 
     server.all('*', (req: express.Request, res: express.Response) => {
         return handle(req, res)

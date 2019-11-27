@@ -9,7 +9,6 @@
     ],
     "baseUrl": ".",
     "moduleResolution": "node",
-    // "strict": true,
     "allowJs": true,
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
@@ -22,7 +21,8 @@
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "strict": false
   },
   "exclude": [
     "dist",
