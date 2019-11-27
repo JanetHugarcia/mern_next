@@ -2,8 +2,9 @@ import express from 'express';
 import next from 'next';
 import morgan from 'morgan';
 
-import graphqlHTTP from 'express-graphql';
-import { schema } from './data/schema';
+import { ApolloServer } from 'apollo-server-express';
+import { typeDefs } from './data/schema';
+import { resolvers } from './data/resolvers';
 
 const PORT = process.env.PORT || 3000;
 const dev = process.env.NODE_ENV !== 'production';
@@ -11,25 +12,22 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-    const server = express();
+    const app = express();
+    const server = new ApolloServer({typeDefs, resolvers});
 
     // settings
-    server.set('port', PORT);
+    app.set('port', PORT);
 
     // middlewares
-    server.use(morgan('dev'));
-    server.use('/graphql', graphqlHTTP({
-        schema,
-        graphiql: true
-    }))
+    server.applyMiddleware({app})
+    app.use(morgan('dev'));
 
     // routes
-
-    server.all('*', (req: express.Request, res: express.Response) => {
+    app.all('*', (req: express.Request, res: express.Response) => {
         return handle(req, res)
       })
     
-    server.listen(server.get('port'), () => {
-        console.log(`> Ready on http://localhost:${server.get('port')}`)
+    app.listen(app.get('port'), () => {
+        console.log(`> Ready on http://localhost:${app.get('port')}${server.graphqlPath}`)
     })
 })
