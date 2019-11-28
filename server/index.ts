@@ -6,7 +6,7 @@ import { ApolloServer } from 'apollo-server-express';
 import { typeDefs } from './data/schema';
 import { resolvers } from './data/resolvers';
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();

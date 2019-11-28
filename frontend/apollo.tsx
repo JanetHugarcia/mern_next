@@ -4,12 +4,14 @@ import { HttpLink } from 'apollo-link-http';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import fetch from 'node-fetch';
+import { GlobalStyle } from '../frontend/config/index';
 
 export function withApollo(PageComponent) {
   const WithApollo = ({apolloClient, apolloState, ...pageProps}) => {
     const client = createApolloClient();
     return (
       <ApolloProvider client={client}>
+        <GlobalStyle />
         <PageComponent {...pageProps} />
       </ApolloProvider>
     )

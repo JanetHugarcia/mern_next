@@ -2,12 +2,8 @@
 import NextApp from 'next/app'
 import React from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
-import { ThemeProvider as MaterialThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-const theme = {
-  primary: '#f2f2f2',
-  ...createMuiTheme()
-}
+const theme = {};
 
 export default class App extends NextApp {
   componentDidMount() {
@@ -21,9 +17,7 @@ export default class App extends NextApp {
 
     return (
       <StyledThemeProvider theme={theme}>
-        <MaterialThemeProvider theme={theme}>
           <Component {...pageProps} />
-        </MaterialThemeProvider>
       </StyledThemeProvider>
     )
   }
